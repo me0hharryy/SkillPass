@@ -1,7 +1,7 @@
 # SkillPass: Decentralized Proof-of-Skill Platform
 <div align="center">
   <img 
-    src="https://raw.githubusercontent.com/me0hharryy/SkillPass/main/public/vite.svg" 
+    src="https://raw.githubusercontent.com/me0hharryy/SkillPass/main/public/egyptian-symbol-hekha-silhouette-by-Vexels (2).png" 
     width="150" 
     alt="Vite Logo"
   >
