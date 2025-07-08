@@ -16,7 +16,7 @@ SkillPass lets users mint Soulbound NFTs that represent verified skills and work
 
 <hr/>
 
-** FEATURES **
+### FEATURES
 - Wallet login (Sepolia testnet)
 - Mint Skill NFTs (soulbound)
 - Upload metadata to IPFS (via NFT.storage)
