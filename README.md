@@ -1,4 +1,4 @@
-## SkillPass
+# SkillPass
 
 ## _Problem:_
 Freelancers and gig workers struggle to prove their skills across platforms. Traditional platforms own their ratings, and most credentials aren't verifiable.
