@@ -1,5 +1,5 @@
 # SkillPass: Decentralized Proof-of-Skill Platform
-![Egyptian Hekha Symbol](https://raw.githubusercontent.com/me0hharryy/SkillPass/main/public/vite.svg)
+![Egyptian Hekha Symbol](https://github.com/me0hharryy/SkillPass/main/public/vite.svg)
 
 ### _Problem:_
 Freelancers and gig workers struggle to prove their skills across platforms. Traditional platforms own their ratings, and most credentials aren't verifiable.
