@@ -14,3 +14,12 @@ Freelancers and gig workers struggle to prove their skills across platforms. Tra
 SkillPass lets users mint Soulbound NFTs that represent verified skills and work history. These NFTs are stored on-chain, non-transferable, and viewable as a portfolio tied to the user's wallet.
 
 
+<hr/>
+
+** FEATURES **
+- Wallet login (Sepolia testnet)
+- Mint Skill NFTs (soulbound)
+- Upload metadata to IPFS (via NFT.storage)
+- View public portfolio of skills
+- Add & display work history timeline
+- Fully decentralized - user owns their proof
