@@ -1,7 +1,10 @@
+// src/App.js
 import React, { useState } from 'react';
 import { ethers } from 'ethers';
 import CredentialForm from './components/CredentialForm';
 import Portfolio from './components/Portfolio';
+import WorkForm from './components/WorkForm';
+import WorkTimeline from './components/WorkTimeline';
 import './App.css';
 
 function App() {
@@ -31,6 +34,8 @@ function App() {
           <p className="mb-4">Connected as: {account}</p>
           <CredentialForm account={account} />
           <Portfolio account={account} />
+          <WorkForm account={account} />
+          <WorkTimeline account={account} />
         </div>
       )}
     </div>
