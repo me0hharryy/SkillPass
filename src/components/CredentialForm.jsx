@@ -2,26 +2,77 @@ import React, { useState } from 'react';
 import { uploadToIPFS } from '../utils/ipfs';
 import { mintSkillNFT } from '../utils/contract';
 
+const CONTRACT_ADDRESS = '0xebaE55f97598fBD36aF0fCAAF62e5ADc2fe96462'; // TODO: Replace with your actual deployed address
+
 const CredentialForm = ({ account }) => {
-    const [form, setForm] = useState({ name: '', skill: '', description: '', image: null });
+  const [form, setForm] = useState({ name: '', skill: '', description: '', image: null });
+  const [loading, setLoading] = useState(false);
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        const metadataUrl = await uploadToIPFS(form);
-        await mintSkillNFT(metadataUrl);
-        alert('SkillPass NFT Minted!');
-    };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-    return (
-        <form onSubmit={handleSubmit} className="bg-gray-800 p-6 rounded mb-6">
-            <h2 className="text-xl mb-4">New Skill Credential</h2>
-            <input type="text" placeholder="Name" className="input" onChange={e => setForm({ ...form, name: e.target.value })} required />
-            <input type="text" placeholder="Skill" className="input" onChange={e => setForm({ ...form, skill: e.target.value })} required />
-            <textarea placeholder="Description" className="input" onChange={e => setForm({ ...form, description: e.target.value })} required></textarea>
-            < input type="file" className="input" onChange={e => setForm({ ...form, image: e.target.files[0] })} />
-            <button type="submit" className="bg-yellow-400 text-black px-4 py-2 mt-2 rounded">Mint Skill NFT</button>
-        </form>
-    );
+    if (!account) {
+      alert('Please connect your wallet first.');
+      return;
+    }
+
+    setLoading(true);
+    try {
+      const metadataUrl = await uploadToIPFS(form);
+      await mintSkillNFT(metadataUrl, CONTRACT_ADDRESS);
+      alert('✅ SkillPass NFT Minted!');
+      setForm({ name: '', skill: '', description: '', image: null });
+    } catch (error) {
+      console.error('Minting failed:', error);
+      alert('❌ Minting failed. Check console for details.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-4">
+      <h2 className="text-2xl font-bold text-[#A64D79] mb-4">New Skill Credential</h2>
+
+      <input
+        type="text"
+        placeholder="Name"
+        className="bg-[#1A1A1D] text-white border border-[#6A1E55] p-3 rounded-lg w-full"
+        value={form.name}
+        onChange={e => setForm({ ...form, name: e.target.value })}
+        required
+      />
+      <input
+        type="text"
+        placeholder="Skill"
+        className="bg-[#1A1A1D] text-white border border-[#6A1E55] p-3 rounded-lg w-full"
+        value={form.skill}
+        onChange={e => setForm({ ...form, skill: e.target.value })}
+        required
+      />
+      <textarea
+        placeholder="Description"
+        className="bg-[#1A1A1D] text-white border border-[#6A1E55] p-3 rounded-lg w-full"
+        value={form.description}
+        onChange={e => setForm({ ...form, description: e.target.value })}
+        required
+      ></textarea>
+      <input
+        type="file"
+        className="bg-[#1A1A1D] text-white border border-[#6A1E55] p-3 rounded-lg w-full"
+        onChange={e => setForm({ ...form, image: e.target.files[0] })}
+        required
+      />
+
+      <button
+        type="submit"
+        disabled={loading}
+        className="bg-[#A64D79] hover:bg-[#6A1E55] text-white font-semibold px-6 py-2 rounded-lg"
+      >
+        {loading ? 'Minting...' : '🎨 Mint Skill NFT'}
+      </button>
+    </form>
+  );
 };
 
 export default CredentialForm;

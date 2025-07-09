@@ -23,12 +23,12 @@ const Home = () => {
         <img src={companyLogo} alt="SkillPass Logo" className="img" />
         <h1 className='heading'>SkillPass</h1>
         <p className='text'>Mint Soulbound NFTs to prove your skills.<br></br> Log your freelance work history.<br></br><br/>
-        Build a permanent, verifiable Web3 resume owned by you.</p>
+        Own a permanent, verifiable Web3 resume.</p>
         <button
           onClick={connectWallet}
           className="btn"
         >
-          Connect 
+            🦊 Authenticate Wallet
         </button>
       </div>
     </div>

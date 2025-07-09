@@ -1,0 +1,107 @@
+
+============================
+SkillPass - Project Summary
+============================
+
+SkillPass is a decentralized Web3 platform that allows users (freelancers, students, professionals) to:
+- Mint skill credentials as Soulbound NFTs
+- Log their work history on-chain
+- View a blockchain-verified resume
+
+--------------------------------------------------
+🔧 1. Technologies Used
+--------------------------------------------------
+- React.js: Frontend UI
+- Tailwind CSS: Styling
+- Solidity: Smart contracts (ERC721, Storage)
+- Hardhat: Development and deployment framework
+- Ethers.js: Web3 interaction
+- NFT.storage: IPFS-based decentralized storage
+- Sepolia Testnet: Ethereum testnet for deployment
+
+--------------------------------------------------
+🧱 2. Smart Contracts
+--------------------------------------------------
+
+A. SkillPassNFT.sol
+- ERC721 contract with Soulbound properties (non-transferable)
+- Function: `mintSkill(string memory metadataURI)`
+- Stores a token with metadata URI (from IPFS)
+
+B. WorkHistory.sol
+- Stores work history records (title, description, company, timestamp)
+- Function: `addWork(string, string, string)`
+- Function: `getWorkHistory(address)` returns entries for a wallet
+
+Both are deployed on Sepolia.
+
+--------------------------------------------------
+🌐 3. IPFS Integration (NFT.storage)
+--------------------------------------------------
+- User uploads a skill (name, description, image, skill)
+- The data is uploaded to NFT.storage as a JSON + image
+- Returns an IPFS `ipfs://...` URL which is used in the NFT mint
+
+--------------------------------------------------
+🖼️ 4. Frontend Pages & Flow
+--------------------------------------------------
+
+1. Home.jsx
+- Intro to SkillPass
+- "Connect Wallet" button using Metamask
+- On success → redirects to /dashboard
+
+2. Dashboard.jsx
+- Displays:
+    - CredentialForm → mint NFT
+    - Portfolio → shows owned NFTs
+    - WorkForm → add work entry
+    - WorkTimeline → shows all logged jobs
+- Styled with dark theme, blur/glass effect
+
+--------------------------------------------------
+📤 5. CredentialForm.jsx
+--------------------------------------------------
+- User enters name, skill, description, and uploads image
+- On submit:
+    → Data sent to uploadToIPFS()
+    → Receives metadata URL
+    → Calls mintSkillNFT(metadataUrl, contractAddress)
+    → Interacts with SkillPassNFT contract
+
+--------------------------------------------------
+📤 6. WorkForm.jsx
+--------------------------------------------------
+- User enters job title, company, description
+- On submit:
+    → Calls addWork(title, description, company)
+    → Sends to WorkHistory contract
+
+--------------------------------------------------
+📄 7. WorkTimeline.jsx
+--------------------------------------------------
+- Fetches all jobs using getWorkHistory(address)
+- Maps and displays in vertical timeline format
+
+--------------------------------------------------
+🧪 8. Contracts Deployment
+--------------------------------------------------
+- `scripts/deploy.js` → Deploys SkillPassNFT
+- `scripts/deployWork.js` → Deploys WorkHistory
+- Uses Hardhat + Sepolia network (configured in hardhat.config.js)
+- Wallet private key and RPC URL from .env
+
+--------------------------------------------------
+📂 9. Environment Variables (.env)
+--------------------------------------------------
+NFT_STORAGE_KEY=...       ← from NFT.storage
+PRIVATE_KEY=...           ← wallet private key
+SEPOLIA_RPC_URL=...       ← Infura or Alchemy Sepolia RPC
+
+--------------------------------------------------
+✅ 10. Key Points to Explain in Demo
+--------------------------------------------------
+- On-chain resume is permanent, decentralized, and user-owned
+- Minting NFTs puts skills on blockchain
+- Work history is public and linked to wallet
+- Fully open source & verifiable on testnet
