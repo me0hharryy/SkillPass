@@ -1,6 +1,8 @@
 import { NFTStorage, File } from 'nft.storage';
 
-const client = new NFTStorage({ token: '4c397fdd.5e75092215ee49d791769afc3d4766c6' });
+console.log('NFT_STORAGE_KEY:', import.meta.env.VITE_NFT_STORAGE_KEY);
+
+const client = new NFTStorage({ token: import.meta.env.VITE_NFT_STORAGE_KEY });
 
 export async function uploadToIPFS({ name, skill, description, image }) {
     const metadata = await client.store({
