@@ -41,15 +41,15 @@ const WorkForm = ({ account }) => {
     };
 
     return (
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <h2 className="text-2xl font-bold text-[#A64D79] mb-4">New Work Entry</h2>
+        <form onSubmit={handleSubmit} className="space-y-4 flex flex-col">
+          <h2 className="text-2xl font-bold text-[grey] mb-4">New Work Entry</h2>
 
           <input
             name="title"
             value={formData.title}
             onChange={handleChange}
             placeholder="Job Title"
-            className="bg-[#1A1A1D] text-white border border-[#6A1E55] p-3 rounded-lg w-full"
+            className="bg-[#1A1A1D] text-white border-2 border-red-500 p-3 rounded-lg w-full"
             required
           />
 
@@ -58,7 +58,7 @@ const WorkForm = ({ account }) => {
             value={formData.company}
             onChange={handleChange}
             placeholder="Company"
-            className="bg-[#1A1A1D] text-white border border-[#6A1E55] p-3 rounded-lg w-full"
+            className="bg-[#1A1A1D] text-white border-2 border-red-500 p-3 rounded-lg w-full mt-4"
             required
           />
 
@@ -67,7 +67,7 @@ const WorkForm = ({ account }) => {
             value={formData.description}
             onChange={handleChange}
             placeholder="Job Description"
-            className="bg-[#1A1A1D] text-white border border-[#6A1E55] p-3 rounded-lg w-full"
+            className="bg-[#1A1A1D] text-white border-2 border-red-500 p-3 rounded-lg w-full mt-4"
             required
           />
 

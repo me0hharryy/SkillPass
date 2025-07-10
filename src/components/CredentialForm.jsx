@@ -31,13 +31,13 @@ const CredentialForm = ({ account }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
-      <h2 className="text-2xl font-bold text-[#A64D79] mb-4">New Skill Credential</h2>
+    <form onSubmit={handleSubmit} className="space-y-4 flex flex-col">
+      <h2 className="text-2xl font-bold text-[grey] mb-4">New Skill Credential</h2>
 
       <input
         type="text"
         placeholder="Name"
-        className="bg-[#1A1A1D] text-white border border-[#6A1E55] p-3 rounded-lg w-full"
+        className="bg-[#1A1A1D] text-white border-2 border-red-500 p-3 rounded-lg w-full"
         value={form.name}
         onChange={e => setForm({ ...form, name: e.target.value })}
         required
@@ -45,21 +45,21 @@ const CredentialForm = ({ account }) => {
       <input
         type="text"
         placeholder="Skill"
-        className="bg-[#1A1A1D] text-white border border-[#6A1E55] p-3 rounded-lg w-full"
+        className="bg-[#1A1A1D] text-white border-2 border-red-500 p-3 rounded-lg w-full mt-4"
         value={form.skill}
         onChange={e => setForm({ ...form, skill: e.target.value })}
         required
       />
       <textarea
         placeholder="Description"
-        className="bg-[#1A1A1D] text-white border border-[#6A1E55] p-3 rounded-lg w-full"
+        className="bg-[#1A1A1D] text-white border-2 border-red-500 p-3 rounded-lg w-full mt-4"
         value={form.description}
         onChange={e => setForm({ ...form, description: e.target.value })}
         required
       ></textarea>
       <input
         type="file"
-        className="bg-[#1A1A1D] text-white border border-[#6A1E55] p-3 rounded-lg w-full"
+        className="bg-[#1A1A1D] text-white border-2 border-red-500 p-3 rounded-lg w-full mt-4"
         onChange={e => setForm({ ...form, image: e.target.files[0] })}
         required
       />

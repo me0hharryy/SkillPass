@@ -1,19 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './home.css';
+import '../components/home.css';
 import companyLogo from '../assets/home.svg';
+import { useWallet } from '../utils/WalletContext';
 
 const Home = () => {
-  const [account, setAccount] = useState('');
+  const { account, setAccount } = useWallet();
   const [isLoading, setIsLoading] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const navigate = useNavigate();
 
   useEffect(() => {
-    const handleMouseMove =  (e) => {
+    const handleMouseMove = (e) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
     };
-
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
@@ -23,8 +23,9 @@ const Home = () => {
     if (window.ethereum) {
       try {
         const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-        setAccount(accounts[0]);
-        navigate('/dashboard', { state: { account: accounts[0] } });
+        if (accounts && accounts[0]) {
+          setAccount(accounts[0]);
+        }
       } catch (error) {
         console.error('Error connecting wallet:', error);
       }
@@ -32,6 +33,10 @@ const Home = () => {
       alert('Please install Metamask');
     }
     setIsLoading(false);
+  };
+
+  const goToMinting = () => {
+    navigate('/mint');
   };
 
   return (
@@ -83,8 +88,7 @@ const Home = () => {
 
           {/* Main Heading with Typing Effect */}
           <h1 className="futuristic-heading">
-            <span >SkillPass</span>
-          
+            <span className="typing-text">SkillPass</span>
           </h1>
 
           {/* Subtitle with Glow */}
@@ -113,27 +117,35 @@ const Home = () => {
             </div>
           </div>
 
-          {/* Enhanced Button */}
-          <button
-            onClick={connectWallet}
-            className={`futuristic-btn ${isLoading ? 'loading' : ''}`}
-            disabled={isLoading}
-          >
-            <div className="btn-content">
-              <span className="btn-icon">🦊</span>
-              <span className="btn-text">
-                {isLoading ? 'Connecting...' : 'Authenticate Wallet'}
-              </span>
-            </div>
-            <div className="btn-glow"></div>
-          </button>
-
-          {/* Status Indicator */}
-          {account && (
-            <div className="status-indicator">
-              <div className="status-dot"></div>
-              <span>Connected: {account.slice(0, 6)}...{account.slice(-4)}</span>
-            </div>
+          {/* Enhanced Button or Status */}
+          {!account ? (
+            <button
+              onClick={connectWallet}
+              className={`futuristic-btn ${isLoading ? 'loading' : ''}`}
+              disabled={isLoading}
+            >
+              <div className="btn-content">
+                <span className="btn-icon">🦊</span>
+                <span className="btn-text">
+                  {isLoading ? 'Connecting...' : 'Authenticate Wallet'}
+                </span>
+              </div>
+              <div className="btn-glow"></div>
+            </button>
+          ) : (
+            <>
+              <div className="status-indicator">
+                <div className="status-dot"></div>
+                <span>Connected: {account.slice(0, 6)}...{account.slice(-4)}</span>
+              </div>
+              <button
+                onClick={goToMinting}
+                className="futuristic-btn"
+                style={{ marginTop: '1.5rem' }}
+              >
+                Go to Minting
+              </button>
+            </>
           )}
         </div>
       </div>
@@ -148,4 +160,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Home; 
