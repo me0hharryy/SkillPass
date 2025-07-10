@@ -121,8 +121,8 @@ Pull requests are welcome! For major changes, open an issue first.
 
 ## 🧑‍💻 Made By
 
-- 👨‍💻 Harshpreet Singh (@hharryy)
-- ⚡ Built with ❤️ at [Hackathon Name]
+- 👨‍💻 Big O (@the.rusted.monarchy)
+- ⚡ Harshpreet Singh, Ashutosh, Madhav, Leeza
 
 ---
 
