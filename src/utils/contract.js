@@ -1,5 +1,6 @@
 import { ethers } from 'ethers';
-import abi from './SkillPassABI.json';
+import abiFile from './SkillPassABI.json';
+const abi = abiFile.abi;
 
 const contractAddress = '0xA4E8C7B4F2eA6bF45d61675A973399B83dc6F54c';
 
@@ -7,7 +8,7 @@ export const mintSkillNFT = async (tokenURI) => {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const signer = provider.getSigner();
     const contract = new ethers.Contract(contractAddress, abi, signer);
-    const tx = await contract.mintSkill(tokenURI);
+    const tx = await contract.mintSkill(await signer.getAddress(), tokenURI);
     await tx.wait();
 };
 

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { uploadToIPFS } from '../utils/ipfs';
 import { mintSkillNFT } from '../utils/contract';
 
-const CONTRACT_ADDRESS = '0xebaE55f97598fBD36aF0fCAAF62e5ADc2fe96462'; // TODO: Replace with your actual deployed address
+const CONTRACT_ADDRESS = '0xebaE55f97598fBD36aF0fCAAF62e5ADc2fe96462';
 
 const CredentialForm = ({ account }) => {
   const [form, setForm] = useState({ name: '', skill: '', description: '', image: null });
@@ -16,10 +16,25 @@ const CredentialForm = ({ account }) => {
       return;
     }
 
+    console.log('Form submitted:', form);
+    if (!form.image) {
+      console.error('No image file found.');
+      alert('Please upload an image file.');
+      return;
+    }
+    // Log file object before passing to IPFS
+    console.log('File object before IPFS upload:', form.image);
+
     setLoading(true);
     try {
+      console.log('Uploading metadata to IPFS...');
       const metadataUrl = await uploadToIPFS(form);
+      console.log('Metadata uploaded to IPFS at:', metadataUrl);
+
+      console.log('Calling smart contract to mint NFT...');
       await mintSkillNFT(metadataUrl, CONTRACT_ADDRESS);
+      console.log('NFT minted successfully.');
+
       alert('✅ SkillPass NFT Minted!');
       setForm({ name: '', skill: '', description: '', image: null });
     } catch (error) {
