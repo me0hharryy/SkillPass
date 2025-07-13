@@ -13,16 +13,16 @@ const Navbar = () => {
   const location = useLocation();
   return (
     <nav className="navbar">
-      <div className="navbar-container">
+      <div className="navbar-container" >
         <span className="navbar-logo">SkillPass</span>
-        <ul className="navbar-links">
+        <ul className="navbar-links " >
           {navLinks.map(link => (
-            <li key={link.to}>
+            <li key={link.to} >
               <Link
                 to={link.to}
                 className={
-                  'navbar-link' + (location.pathname === link.to ? ' active' : '')
-                }
+                  'navbar-link' + (location.pathname === link.to ? ' active ' : '')
+                } 
               >
                 {link.label}
               </Link>

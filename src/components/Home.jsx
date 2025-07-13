@@ -77,7 +77,7 @@ const Home = () => {
 
           {/* Logo with Halo Effect */}
           <div className="logo-container">
-            <div className="logo-halo"></div>
+            <div className="logo-halo" ></div>
             <img src={companyLogo} alt="SkillPass Logo" className="logo-img" />
           </div>
 

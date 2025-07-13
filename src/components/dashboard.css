@@ -17,7 +17,7 @@ body {
 }
 
 .two {
-  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #2d2d2d 100%);
+  
   min-height: 100vh;
   width: 100%;
   padding: 2rem;
@@ -48,11 +48,8 @@ body {
   backdrop-filter: blur(20px);
   border-radius: 24px;
   padding: 3rem;
-  border: 1px solid rgba(156, 163, 175, 0.2);
-  box-shadow: 
-    0 20px 40px rgba(0, 0, 0, 0.4),
-    0 8px 16px rgba(0, 0, 0, 0.3),
-    inset 0 1px 0 rgba(156, 163, 175, 0.1);
+  border: 2px solid rgba(156, 163, 175, 0.2);
+  
   position: relative;
   z-index: 1;
 }
@@ -157,9 +154,7 @@ body {
   background: rgba(40, 40, 40, 0.7);
   border-radius: 16px;
   border: 1px solid rgba(156, 163, 175, 0.2);
-  box-shadow: 
-    0 8px 16px rgba(0, 0, 0, 0.3),
-    0 4px 8px rgba(0, 0, 0, 0.2);
+  
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
@@ -171,19 +166,13 @@ body {
   top: 0;
   left: 0;
   right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, #9ca3af, #6b7280, #4b5563);
-  border-radius: 16px 16px 0 0;
-  box-shadow: 0 2px 8px rgba(156, 163, 175, 0.4);
+  
+  
+  border-radius: 16px;
+  
 }
 
-.dashboard-section:hover {
-  transform: translateY(-2px);
-  box-shadow: 
-    0 12px 32px rgba(0, 0, 0, 0.4),
-    0 8px 16px rgba(0, 0, 0, 0.3);
-  border-color: rgba(156, 163, 175, 0.4);
-}
+
 
 .section-heading {
   color: #f1f5f9;
@@ -225,14 +214,14 @@ body {
 .dashboard-section textarea,
 .dashboard-section select {
   background: rgba(20, 20, 20, 0.8);
-  border: 2px solid rgba(156, 163, 175, 0.3);
+  border: 0px solid rgba(156, 163, 175, 0.3);
   border-radius: 8px;
   padding: 12px 16px;
   font-family: 'Inter', sans-serif;
   font-size: 14px;
   color: #e2e8f0;
   transition: all 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  
 }
 
 .dashboard-section input::placeholder,
@@ -245,12 +234,12 @@ body {
 .dashboard-section select:focus {
   outline: none;
   border-color: #9ca3af;
-  box-shadow: 0 0 0 3px rgba(156, 163, 175, 0.2);
+  
   background: rgba(20, 20, 20, 0.9);
 }
 
 .dashboard-section button {
-  background: linear-gradient(135deg, #9ca3af 0%, #6b7280 100%);
+  
   color: #1a1a1a;
   border: none;
   border-radius: 8px;
@@ -260,14 +249,14 @@ body {
   font-size: 14px;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 8px rgba(156, 163, 175, 0.4);
-  border: 1px solid rgba(156, 163, 175, 0.3);
+  
+  border: 2px solid rgba(0, 0, 0, 0.3);
 }
 
 .dashboard-section button:hover {
   transform: translateY(-1px);
-  box-shadow: 0 8px 16px rgba(156, 163, 175, 0.5);
-  background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%);
+  
+  
 }
 
 .dashboard-section button:active {
@@ -275,7 +264,7 @@ body {
 }
 
 .dashboard-section button:disabled {
-  background: linear-gradient(135deg, #475569 0%, #64748b 100%);
+  
   cursor: not-allowed;
   box-shadow: none;
   color: #94a3b8;
@@ -296,7 +285,7 @@ body {
 .dashboard-section .card:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-  border-color: rgba(156, 163, 175, 0.4);
+  border-color: rgba(13, 60, 143, 0.4);
 }
 
 .dashboard-section .card h3,
@@ -471,15 +460,17 @@ body {
   font-size: 1.05rem;
   font-weight: 500;
   padding: 0.4rem 1rem;
-  border-radius: 6px;
+  border-radius: 30px;
   transition: background 0.2s, color 0.2s;
   position: relative;
 }
 
 .navbar-link:hover,
 .navbar-link.active {
-  background: #23272f;
+  background: #323741;
   color: #fff;
+  border-radius: 30px;
+  border: 1px solid  #4b5563;
 }
 
 @media (max-width: 768px) {

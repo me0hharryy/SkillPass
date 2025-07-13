@@ -52,7 +52,7 @@ const CredentialForm = ({ account }) => {
       <input
         type="text"
         placeholder="Name"
-        className="bg-[#1A1A1D] text-white border-2 border-red-500 p-3 rounded-lg w-full"
+        className="bg-transparent border-b border-gray-500 text-white p-2 focus:outline-none"
         value={form.name}
         onChange={e => setForm({ ...form, name: e.target.value })}
         required
@@ -60,21 +60,21 @@ const CredentialForm = ({ account }) => {
       <input
         type="text"
         placeholder="Skill"
-        className="bg-[#1A1A1D] text-white border-2 border-red-500 p-3 rounded-lg w-full mt-4"
+        className="bg-transparent border-b border-gray-500 text-white p-2 focus:outline-none"
         value={form.skill}
         onChange={e => setForm({ ...form, skill: e.target.value })}
         required
       />
       <textarea
         placeholder="Description"
-        className="bg-[#1A1A1D] text-white border-2 border-red-500 p-3 rounded-lg w-full mt-4"
+        className="bg-transparent border-b border-gray-500 text-white p-2 focus:outline-none"
         value={form.description}
         onChange={e => setForm({ ...form, description: e.target.value })}
         required
       ></textarea>
       <input
         type="file"
-        className="bg-[#1A1A1D] text-white border-2 border-red-500 p-3 rounded-lg w-full mt-4"
+        className="bg-transparent border-b border-gray-500 text-white p-2 focus:outline-none"
         onChange={e => setForm({ ...form, image: e.target.files[0] })}
         required
       />
@@ -82,7 +82,7 @@ const CredentialForm = ({ account }) => {
       <button
         type="submit"
         disabled={loading}
-        className="bg-[#A64D79] hover:bg-[#6A1E55] text-white font-semibold px-6 py-2 rounded-lg"
+        className="bg-white text-black px-4 py-2 rounded border border-gray-400 hover:bg-gray-200 transition"
       >
         {loading ? 'Minting...' : '🎨 Mint Skill NFT'}
       </button>
