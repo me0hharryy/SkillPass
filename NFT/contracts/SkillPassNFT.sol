@@ -15,14 +15,14 @@ contract SkillPassNFT is ERC721URIStorage, ERC721Enumerable, Ownable {
 
     constructor() ERC721("SkillPass", "SKILL") Ownable(msg.sender) {}
 
-    function mintSkill(address recipient, string memory _tokenURI) public {
+    function mintSkill(string memory _tokenURI) public {
         require(bytes(_tokenURI).length > 0, "Empty URI");
         require(tokenCount < MAX_SUPPLY, "Max supply reached");
-        
+
         unchecked { tokenCount++; }
-        _safeMint(recipient, tokenCount);
+        _safeMint(msg.sender, tokenCount);
         _setTokenURI(tokenCount, _tokenURI);
-        emit SkillMinted(recipient, tokenCount, _tokenURI);
+        emit SkillMinted(msg.sender, tokenCount, _tokenURI);
     }
 
     function _update(
